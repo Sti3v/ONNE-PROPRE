@@ -3,6 +3,7 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
+  max-zoom: 1.75;
 }
 
 body {
@@ -68,14 +69,32 @@ a , h1 {
   font-family: 'Golos Text', sans-serif;
 }
 
-@media screen and (max-width: 1250px) {
+/** au dessous de 125% **/
+@media screen and (max-width: 1500px) {
   a , h1  {
     font-size: 30px;
     font-weight: 600;
   }
   .logo {
-    width: 40px;
-    border-radius: 10px;
+    width: 50px;
+    border-radius: 15px;
+  }
+  #haut-de-page {
+    grid-template-columns: 75px 100px 100px 90px;
   }
 }
 
+/** au dessous de 150% **/
+@media screen and (max-width: 1200px) {
+  a , h1  {
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .logo {
+    width: 43px;
+    border-radius: 13px;
+  }
+  #haut-de-page {
+    grid-template-columns: 65px 100px 80px 90px;
+  }
+}
