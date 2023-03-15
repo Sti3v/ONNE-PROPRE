@@ -3,9 +3,6 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
-  padding-inline-start: 0;
-  margin-block-start: 0;
-  margin-block-end: 0;
 }
 
 body {
@@ -24,47 +21,61 @@ body {
 }
 
 #haut-de-page {
-  flex-wrap: nowrap;
-  align-items: center;
-  background-color: rgb(50, 130, 184);
-  border-radius: 50px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
-  transition: 0.5s;
-}
-
-#haut-de-page {
   display: grid;
-  grid-template-columns: 100px 200px 150px 300px 200px;
   justify-items: center;
   align-items: center;
+  grid-template-columns: 100px 125px 125px 50px;
+  border-radius: 50px;
+  transition: 0.5s;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+  background-color: rgb(50, 130, 184);
+  position: relative;
+  transition: all 0.3s ease;
 }
 
 #haut-de-page:hover { 
   scale: 1.03;
 }
 
+#profil {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+
+.material-symbols-outlined {
+  display: none;
+  position: absolute;
+}
+
+
 .logo {
-  display: flex !important;
+  display: flex;
   width: 60px; 
   border-radius: 15px;
-  margin: 10px 20px 10px 10px;
+  margin: 5px 0 5px 0;
 }
 
 .logo:hover {
   opacity: 0.90;
   cursor: pointer;
 }
-a {
+a , h1 {
   text-decoration: none;
   color: black;
-  font-size: 50px;
-  font-weight: 700;
+  font-size: 40px;
+  font-weight: 600;
   font-family: 'Golos Text', sans-serif;
-
 }
-h1 {
-  font-size: 50px;
-  font-family: 'Golos Text', sans-serif;
-  font-weight: 700;
+
+@media screen and (max-width: 1250px) {
+  a , h1  {
+    font-size: 30px;
+    font-weight: 600;
+  }
+  .logo {
+    width: 40px;
+    border-radius: 10px;
+  }
 }
 
