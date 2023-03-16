@@ -2,7 +2,7 @@
 
 setInterval(function () {
   checkZoomLevel();
-}, 2500);
+}, 2000);
 
 function checkZoomLevel() {
   let zoomLevel = Math.round(window.devicePixelRatio * 100);

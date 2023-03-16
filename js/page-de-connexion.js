@@ -1,87 +1,58 @@
-// Your web app's Firebase configuration
-let firebaseConfig = {
-  apiKey: "AIzaSyBeLTJ3FzhobWw0Uv6hiCtltq3PEkkhssY",
-  authDomain: "onne-propre.firebaseio.com",
-  databaseURL: "https://onne-propre.firebaseio.com",
-  projectId: "onne-propre",
-  storageBucket: "onne-propre.appspot.com",
-  messagingSenderId: "SENDER_ID",
-  appId: "APP_ID",
-};
+const users = [{ user: "admin", mdp: "1" }];
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+// Date d'expiration dans 7 jours
+const expirationDate = new Date();
+expirationDate.setDate(expirationDate.getDate() + 7);
 
-const email = document.getElementById("email").value;
-const password = document.getElementById("password").value;
-console.log(password);
-console.log(email);
+const form = document.getElementById("login-form");
+const usernameInput = document.getElementById("username");
+const mdpInput = document.getElementById("mdp");
 
+let cookieValue;
 
-// Create an account
-firebase.auth().createUserWithEmailAndPassword(email, password)
-  .then((userCredential) => {
-    // Signed in 
-    let user = userCredential.user;
-    // ...const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    console.log(password);
-    console.log(email);
-    
-    // Créer un compte
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Connecté
-        let user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        let errorCode = error.code;
-        let errorMessage = error.message;
-        // ..
-      });
-    
-    // Se connecter
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Connecté
-        let user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        let errorCode = error.code;
-        let errorMessage = error.message;
-      });
-    
-    // Se déconnecter
-    firebase.auth().signOut().then(() => {
-      // Déconnexion réussie.
-    }).catch((error) => {
-      // Une erreur s'est produite.
-    });
-    
-  })
-  .catch((error) => {
-    let errorCode = error.code;
-    let errorMessage = error.message;
-    // ..
-  });
-
-// Sign in
-firebase.auth().signInWithEmailAndPassword(email, password)
-  .then((userCredential) => {
-    // Signed in
-    let user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    let errorCode = error.code;
-    let errorMessage = error.message;
-  });
-
-// Sign out
-firebase.auth().signOut().then(() => {
-  // Sign-out successful.
-}).catch((error) => {
-  // An error happened.
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const username = usernameInput.value;
+  const mdp = mdpInput.value;
+  const user = users.find((user) => user.user === username && user.mdp === mdp);
+  if (user) {
+    document.cookie = `connecter=true;expires=${expirationDate.toUTCString()};path=/`;
+    window.location.href = "../index.html";
+  } else {
+    alert("Username or password is incorrect!");
+  }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  cookieValue = document.cookie.replace(
+    /(?:(?:^|.*;\s*)connecter\s*\=\s*([^;]*).*$)|^.*$/,
+    "$1"
+  );
+});
+
+const profil = document.getElementById("profil");
+
+const inputs = document.querySelectorAll("input");
+inputs.forEach((input, index) => {
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      if (index + 1 < inputs.length) {
+        inputs[index + 1].focus();
+      } else {
+        inputs[0].focus();
+      }
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (index - 1 >= 0) {
+        inputs[index - 1].focus();
+      } else {
+        inputs[inputs.length - 1].focus();
+      }
+    }
+  });
+});
+
+if (cookieValue && profil) {
+  profil.style.display = "none";
+}

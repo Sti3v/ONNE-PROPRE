@@ -11,18 +11,18 @@
   </head>
   <body>
     <main>
-      <form>
+      <form id="login-form">
         <h2>Bienvenue</h2>
         <label>
-          Email:
-          <input type="email" name="email" placeholder="Email" />
+          User:
+          <input id="username" type="text" placeholder="Email" autocomplete="off"/>
         </label>
         <br />
         <label>
           Mdp:
-          <input type="password" name="password" placeholder="Mot de passe" />
+          <input id="mdp" type="password" placeholder="Mot de passe" autocomplete="off"/>
         </label>
-        <i class="fa-regular fa-eye-slash"></i>
+        <i id="ex" class="fa-regular fa-eye-slash"></i>
         <br />
         <button type="submit">Se connecter</button>
         <br />
