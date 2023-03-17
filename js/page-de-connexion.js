@@ -5,10 +5,11 @@ const expirationDate = new Date();
 expirationDate.setHours(expirationDate.getHours() + 2);
 
 
-const form = document.getElementById("login-form");
+const form = document.forms[0]; //* récupère le premier formulaire de la page */
+
 const usernameInput = document.getElementById("username");
 const mdpInput = document.getElementById("password");
-
+console.log(form);
 let cookieValue;
 
 form.addEventListener("submit", (event) => {
