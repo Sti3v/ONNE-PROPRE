@@ -1,20 +1,21 @@
-const users = [{ user: "admin", mdp: "1" }];
+const users = [{ user: "admin", password: "1" }];
 
 // Date d'expiration dans 7 jours
 const expirationDate = new Date();
-expirationDate.setDate(expirationDate.getDate() + 7);
+expirationDate.setHours(expirationDate.getHours() + 2);
+
 
 const form = document.getElementById("login-form");
 const usernameInput = document.getElementById("username");
-const mdpInput = document.getElementById("mdp");
+const mdpInput = document.getElementById("password");
 
 let cookieValue;
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const username = usernameInput.value;
-  const mdp = mdpInput.value;
-  const user = users.find((user) => user.user === username && user.mdp === mdp);
+  const password = mdpInput.value;
+  const user = users.find((user) => user.user === username && user.password === password);
   if (user) {
     document.cookie = `connecter=true;expires=${expirationDate.toUTCString()};path=/`;
     window.location.href = "../index.html";
@@ -29,8 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "$1"
   );
 });
-
-const profil = document.getElementById("profil");
 
 const inputs = document.querySelectorAll("input");
 inputs.forEach((input, index) => {
@@ -53,6 +52,3 @@ inputs.forEach((input, index) => {
   });
 });
 
-if (cookieValue && profil) {
-  profil.style.display = "none";
-}
