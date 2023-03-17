@@ -8,6 +8,11 @@ if (cookieValue=true) {
   link.rel = "stylesheet";
   link.href = "./css/connexion.css";
   document.head.appendChild(link);
+} else {
+  const link = document.querySelector('link[href="./css/connexioN;css"]');
+  if (link) {
+    link.parentNode.removeChild(link);
+  }
 }
 
 
