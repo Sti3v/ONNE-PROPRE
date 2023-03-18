@@ -53,8 +53,7 @@ inputs.forEach((input, index) => {
   });
 });
 
-
-
+//*  Ovrire et fermer l'oeil, pour montrer le mots de passz
 const passwordInput = document.getElementById("password");
 const togglePassword = document.getElementById("toggle-password");
 

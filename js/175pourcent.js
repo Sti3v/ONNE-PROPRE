@@ -1,8 +1,8 @@
-//** Ce bout de code permet de limiter la taille de la a 175% */
+//** Ce bout de code permet de limiter la taille de la page a 175% */
 
 setInterval(function () {
   checkZoomLevel();
-}, 2000);
+}, 5000);
 
 function checkZoomLevel() {
   let zoomLevel = Math.round(window.devicePixelRatio * 100);
@@ -10,7 +10,7 @@ function checkZoomLevel() {
     alert("Veuillez baisser le niveau de zoom avant de continuer ! Vous ne pouvez pas depasser 175%!");
     setTimeout(function () {
       checkZoomLevel();
-    }, 2000);
+    }, 5000);
   }
 }
 
