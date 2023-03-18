@@ -1,22 +1,25 @@
-const users = [{ user: "admin", password: "1" }];
+const users = [
+  { user: "admin", password: "1234" },
+  { user: "Sti3v", password: "1234"}
+];
 
-// Date d'expiration dans 7 jours
+//* Date d'expiration dans 2 heure
 const expirationDate = new Date();
 expirationDate.setHours(expirationDate.getHours() + 2);
-
 
 const form = document.forms[0]; //* récupère le premier formulaire de la page */
 
 const usernameInput = document.getElementById("username");
 const mdpInput = document.getElementById("password");
-console.log(form);
 let cookieValue;
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const username = usernameInput.value;
   const password = mdpInput.value;
-  const user = users.find((user) => user.user === username && user.password === password);
+  const user = users.find(
+    (user) => user.user === username && user.password === password
+  );
   if (user) {
     document.cookie = `connecter=true;expires=${expirationDate.toUTCString()};path=/`;
     window.location.href = "../index.html";
