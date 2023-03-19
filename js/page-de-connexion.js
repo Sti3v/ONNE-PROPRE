@@ -21,7 +21,7 @@ form.addEventListener("submit", (event) => {
     (user) => user.user === username && user.password === password
   );
   if (user) {
-    document.cookie = `connecter=true;expires=${expirationDate.toUTCString()};path=/`;
+    document.cookie = `connecter=true,&(usernameInput);expires=${expirationDate.toUTCString()};path=/`;
     window.location.href = "../index.html";
   } else {
     alert("Username or password is incorrect!");
@@ -72,3 +72,8 @@ togglePassword.addEventListener("click", function () {
   }
 });
 
+if (user) {
+  document.cookie = `connecter=true;expires=${expirationDate.toUTCString()};path=/`;
+  document.cookie = `username=${username};expires=${expirationDate.toUTCString()};path=/`;
+  window.location.href = "./index.html";
+}
