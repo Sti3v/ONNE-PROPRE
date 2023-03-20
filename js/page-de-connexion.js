@@ -1,6 +1,6 @@
 const users = [
   { user: "admin", password: "1234" },
-  { user: "Sti3v", password: "1234"}
+  { user: "Sti3v", password: "1234"},
 ];
 
 //* Date d'expiration dans 2 heure
