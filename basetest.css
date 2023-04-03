@@ -29,6 +29,15 @@ a , h1 {
   font-weight: 600;
 }
 
+.nav {
+  color: green;;
+  position: absolute;
+}
+
+.acceuil {
+  top: 0%;
+}
+
 #profil {
   position: absolute;
   right: 20px;
